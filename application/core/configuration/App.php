@@ -3,6 +3,7 @@
 class App
 {
 	private static $params = [];
+	public static $db;
 
 	private function __construct() { }
 	protected function __clone() { }

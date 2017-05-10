@@ -4,7 +4,7 @@ class Route
 {
 	static public function start()
 	{
-		$path = $_SERVER['REQUEST_URI'];
+		$path = preg_replace('/\?.*/','', $_SERVER['REQUEST_URI']);
 		$parts = preg_split('/[\/?&\*#]/', $path);
 
 		$controllerString = isset($parts[1]) && !empty($parts[1])? trim(strtolower($parts[1])) : App::getParam('defaultController');

@@ -8,7 +8,8 @@ require_once 'application/bootstrap.php';
 App::setParams([
 	'template' => 'main',
 	'defaultController' => 'main',
-	'defaultAction' => 'index'
+	'defaultAction' => 'index',
+	'title' => 'Taskman'
 ]);
 
 Route::start();

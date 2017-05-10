@@ -5,6 +5,7 @@ class View
 	private $template;
 	private $path;
 	private $content;
+	private $data;
 
 	public function __construct()
 	{
@@ -13,6 +14,7 @@ class View
 
 	public function generate($content, $data = null)
 	{
+		$this->data = $data;
 		if(is_array($data))
 		{
 			extract($data);
@@ -44,6 +46,10 @@ class View
 
 	private function generateContent()
 	{
+		if(is_array($this->data))
+		{
+			extract($this->data);
+		}
 		include $this->path . $this->content . '.php';
 	}
 }

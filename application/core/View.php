@@ -50,6 +50,7 @@ class View
 		{
 			extract($this->data);
 		}
-		include $this->path . $this->content . '.php';
+
+		include_once $this->path . $this->content . '.php';
 	}
 }

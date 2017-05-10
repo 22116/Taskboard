@@ -12,9 +12,26 @@ class mainController extends Controller
 
 	public function actionEditor()
 	{
-		if(!authModel::$isAuth) header('location: /');
+		if(!authModel::$isAuth || !isset($_REQUEST['task_id'])) header('location: /');
 
-		$this->view->generate('editor');
+		if(isset($_REQUEST['task_id']) && !empty($_REQUEST['task_id']) &&
+			isset($_REQUEST['content']) && !empty($_REQUEST['content']))
+		{
+			$task = taskModel::findById($_REQUEST['task_id']);
+			$task->setContent(trim($_REQUEST['content']));
+			$task->setChecked(isset($_REQUEST['checked']) ? 1 : 0);
+			$task->save();
+			header('location: /');
+		}
+
+		$user = taskModel::findById($_REQUEST['task_id']);
+		$this->view->generate('editor', [
+			'name' => $user->getName(),
+			'mail' => $user->getMail(),
+			'text' => $user->getContent(),
+			'checked' => $user->getChecked(),
+			'id' => $user->getId()
+		]);
 	}
 
 	public function actionCreator()

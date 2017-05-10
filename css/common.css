@@ -49,13 +49,12 @@ footer
 }
 .row .label-success
 {
-    width: auto;
     color: white;
     font-size: 12pt;
-    float: right;
-    margin-top: -50px;
     border-radius: 10px;
     padding: 3px;
+    width: 100px;
+    text-align: center;
 }
 .content .col-md-4
 {
@@ -102,17 +101,20 @@ footer
     padding: 50px;
     border-radius: 10px;
 }
-#formcreator
+#formcreator, #formeditor
 {
     margin: auto;
     width: 60%;
 }
 #formcreator > div > *,
-#formcreator > div > div > *
+#formcreator > div > div > *,
+#formeditor > div > *,
+#formeditor > div > div > *
 {
     margin-top: 20px;
 }
-#formcreator textarea
+#formcreator textarea,
+#formeditor textarea
 {
     height: 200px;
     resize: none;
@@ -132,7 +134,8 @@ footer
     font-weight: 500;
     line-height: 40px;
 }
-#formcreator .input-group
+#formcreator .input-group,
+#formeditor .input-group
 {
     display: block;
 }
@@ -175,4 +178,8 @@ footer
 #output
 {
     margin-left: 30px;
+}
+#formeditor input[type='checkbox']
+{
+    float: right;
 }

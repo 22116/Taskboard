@@ -40,13 +40,14 @@ class blocksWidget extends Widget
 
 			$this->content .= '<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<img src="'.$pict->getPath().'" alt="">
+				<img src="/'.$pict->getPath().'" alt="">
 				<div class="caption">
 					<h3>'.$task->getName().'</h3>
 					<h3>'.$task->getMail().'</h3>
 					<p>'.$task->getContent().'</p>
-					<p>
-						'.($task->getChecked() ? '<div class="label-success">Checked</div>' : '').
+					<p>'
+				.(authModel::$isAuth && authModel::$user->getPermissionId() == 2 ? '<a href="/main/editor?task_id='.$task->getId().'" class="btn btn-primary" role="button">Edit</a>' : '')
+				.($task->getChecked() ? '<div class="label-success">Checked</div>' : '').
 					'</p>
 				</div>
 			</div>
